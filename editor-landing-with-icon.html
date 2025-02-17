@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Hill Press Editor</title>
+    
+    <!-- Icon and Mobile Settings -->
+    <link rel="icon" type="image/svg+xml" href="editor-icon.svg">
+    <link rel="apple-touch-icon" href="editor-icon.svg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PH Editor">
+    
+    <!-- Mobile Theme Color -->
+    <meta name="theme-color" content="#4A5568">
+    
+    <!-- Home Screen Icon Title -->
+    <meta name="application-name" content="PH Editor">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    
+    <style>
+        /* Add to home screen animation */
+        @keyframes addToHome {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        .add-to-home-hint {
+            animation: addToHome 0.5s ease-out;
+            display: none;
+        }
+        
+        /* Show hint only on iOS Safari */
+        .ios-safari .add-to-home-hint {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 space-y-6">
+            <!-- App Icon -->
+            <div class="flex justify-center">
+                <img src="editor-icon.svg" alt="Post Hill Editor" class="w-24 h-24">
+            </div>
+
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-gray-900">Post Hill Press Editor</h1>
+                <p class="mt-2 text-gray-600">Access your manuscript editor</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-md">
+                    <h2 class="font-semibold text-blue-800">Device Compatibility</h2>
+                    <ul class="mt-2 text-sm text-blue-700">
+                        <li>✓ iPhone/iPad</li>
+                        <li>✓ Android devices</li>
+                        <li>✓ Desktop browsers</li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-md">
+                    <h2 class="font-semibold text-green-800">Features Available</h2>
+                    <ul class="mt-2 text-sm text-green-700">
+                        <li>✓ Manuscript analysis</li>
+                        <li>✓ Style checking</li>
+                        <li>✓ Editorial feedback</li>
+                        <li>✓ Email integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <a href="/editor" 
+                   class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+                    Launch Editor
+                </a>
+            </div>
+
+            <!-- Add to Home Screen Hint -->
+            <div class="add-to-home-hint fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center">
+                <p>Add to Home Screen for the best experience</p>
+                <p class="text-sm text-gray-400">Tap the share button and select "Add to Home Screen"</p>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-sm text-gray-500">
+            <p>Problems accessing the editor? Contact support@posthillpress.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Detect iOS Safari
+        const isIOSSafari = () => {
+            const ua = window.navigator.userAgent;
+            const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+            const webkit = !!ua.match(/WebKit/i);
+            const standalone = window.navigator.standalone;
+            return iOS && webkit && !standalone;
+        }
+
+        // Add class if iOS Safari
+        if (isIOSSafari()) {
+            document.body.classList.add('ios-safari');
+        }
+    </script>
+</body>
+</html>
